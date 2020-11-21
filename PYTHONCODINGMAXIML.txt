@@ -1,0 +1,30 @@
+from collections import defaultdict   
+
+def sub_string(str): 
+    length = len(str) 
+      
+     
+    distinct = len(set([x for x in str])) 
+  
+    ctr, startingpos, index, minimumlen = 0, 0, -1, 9999999999
+    count = defaultdict(lambda: 0) 
+    for i in range(length): 
+        count[str[i]] += 1
+ 
+        if count[str[i]] == 1: 
+            ctr += 1
+  
+        if ctr == distinct: 
+            while count[str[startingpos]] > 1: 
+                if count[str[startingpos]] > 1: 
+                    count[str[startingpos]] -= 1
+                startingpos += 1
+  
+            len1 = i - startingpos + 1
+            if minimumlen > len1: 
+                minimumlen = len1 
+                index = startingpos 
+    return str[index: index + minimumlen] 
+      
+inp = str(input())
+print(len(sub_string(inp)))
