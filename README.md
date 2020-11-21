@@ -1,2 +1,0 @@
-# Maximal-Labs
-Python code
